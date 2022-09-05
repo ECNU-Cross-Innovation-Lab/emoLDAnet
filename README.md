@@ -1,5 +1,29 @@
 # emoLDAnet
 
+The files are orgnized as follows
+```
+emoLDAnet
+├── DL (Deep Learning)
+│   ├── FER
+│   ├── mtcnn
+│   ├── main.py
+│   ├── utils.pkl
+│   └── video_process.py
+├── ML (Machine Learning)
+│   ├── ML.py
+│   └── utils.pkl
+│ 
+├── Statistical source data of AI analysis
+│   └── 25 times of LDA
+│       └── LDA type
+│           └── i-th seed
+│               └── i-th fold results.csv
+│ 
+└── Statistical source data of Corelation analysis between AI - Psy. questionnaire
+    └── classfier-fold_kcor.csv
+```
+
+
 ## Code
 
 1. MTCNN face detection network is in [MTCNN](./DL/mtcnn/).
