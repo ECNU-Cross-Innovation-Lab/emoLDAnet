@@ -97,14 +97,6 @@ def solve(in_path, out_dir,model_name):
     temp_A = np.stack((A_acc_list, A_rec_list, A_f1_list), axis=1)
     temp_L = np.stack((L_acc_list,L_rec_list, L_f1_list), axis=1)
 
-    # temp_D = np.concatenate((np.mean(D_acc_list, 0, keepdims=True), np.mean(D_rec_list, 0, keepdims=True),
-    #                             np.mean(D_f1_list, 0, keepdims=True)))
-    # temp_A = np.concatenate((np.mean(A_acc_list, 0, keepdims=True), np.mean(A_rec_list, 0, keepdims=True),
-    #                             np.mean(A_f1_list, 0, keepdims=True)))
-    # temp_L = np.concatenate((np.mean(L_acc_list, 0, keepdims=True), np.mean(L_rec_list, 0, keepdims=True),
-    #                             np.mean(L_f1_list, 0, keepdims=True)))
-
-
     global final_D
     global final_A
     global final_L
@@ -261,14 +253,6 @@ if __name__ == '__main__':
                                    'VGG19'],
                             columns=pd.MultiIndex.from_product([['Accuracy', 'Recall', 'F1-score'],
                                                                 ['SVM', 'DT', 'RF']]))
-        # 5 fold mean
-        # df_D.to_csv(f'D/{cnt}.csv')
-        # df_A.to_csv(f'A/{cnt}.csv')
-        # df_L.to_csv(f'L/{cnt}.csv')
-
-
-
-
 
         cnt+=1
 
