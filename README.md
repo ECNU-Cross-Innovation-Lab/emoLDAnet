@@ -7,11 +7,11 @@ emoLDAnet
 │   ├── FER
 │   ├── mtcnn
 │   ├── main.py
-│   ├── utils.pkl
+│   ├── utils.py
 │   └── video_process.py
 ├── ML (Machine Learning)
 │   ├── ML.py
-│   └── utils.pkl
+│   └── utils.py
 │ 
 ├── Statistical source data of AI analysis
 │   └── 25 times of LDA
