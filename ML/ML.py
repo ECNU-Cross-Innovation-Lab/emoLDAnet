@@ -9,7 +9,7 @@ from utils import to_int, label_D, label_A, label_L, get_model
 
 np.random.seed(42)
 fold = 5
-each = True
+each = False
 D_acc_list = []
 A_acc_list = []
 L_acc_list = []
@@ -89,13 +89,21 @@ def solve(in_path, out_dir,model_name):
                                     'vgg11_l', 'vgg13_d', 'vgg13_a', 'vgg13_l',
                                     'vgg16_d', 'vgg16_a', 'vgg16_l', 'vgg19_d', 'vgg19_a', 'vgg19_l', 'D', 'A', 'L'])
         # psychology res
-        # fold_out_dir = out_dir + '/' + str(K) + '.csv'
-        # res.to_csv(fold_out_dir)L
+        fold_out_dir = out_dir + '/' + str(K) + '.csv'
+        res.to_csv(fold_out_dir)
         K += 1
 
     temp_D=np.stack((D_acc_list,D_rec_list,D_f1_list),axis=1)
     temp_A = np.stack((A_acc_list, A_rec_list, A_f1_list), axis=1)
     temp_L = np.stack((L_acc_list,L_rec_list, L_f1_list), axis=1)
+
+    # temp_D = np.concatenate((np.mean(D_acc_list, 0, keepdims=True), np.mean(D_rec_list, 0, keepdims=True),
+    #                             np.mean(D_f1_list, 0, keepdims=True)))
+    # temp_A = np.concatenate((np.mean(A_acc_list, 0, keepdims=True), np.mean(A_rec_list, 0, keepdims=True),
+    #                             np.mean(A_f1_list, 0, keepdims=True)))
+    # temp_L = np.concatenate((np.mean(L_acc_list, 0, keepdims=True), np.mean(L_rec_list, 0, keepdims=True),
+    #                             np.mean(L_f1_list, 0, keepdims=True)))
+
 
     global final_D
     global final_A
@@ -156,7 +164,7 @@ def test(res, df):
 
 if __name__ == '__main__':
     in_dir = '5times_emoldanet'
-    in_path = 'result_clear.csv'
+    # in_path = 'result_clear.csv'
     out_dir = './5fold'
     model_list = ['svm','tree','forest']
     final_D_list = []
@@ -253,6 +261,15 @@ if __name__ == '__main__':
                                    'VGG19'],
                             columns=pd.MultiIndex.from_product([['Accuracy', 'Recall', 'F1-score'],
                                                                 ['SVM', 'DT', 'RF']]))
+        # 5 fold mean
+        if not each:
+            df_D.to_csv(f'D/{cnt}.csv')
+            df_A.to_csv(f'A/{cnt}.csv')
+            df_L.to_csv(f'L/{cnt}.csv')
+
+
+
+
 
         cnt+=1
 
