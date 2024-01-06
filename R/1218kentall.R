@@ -1,4 +1,4 @@
-# kendall tau 批量计算
+# kendall tau batch file
 library(parallel)
 
 getwd()
